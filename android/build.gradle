@@ -1,21 +1,28 @@
 buildscript {
     ext {
-        buildToolsVersion = "35.0.0"
+        buildToolsVersion = "34.0.0" // Build Tools'un en son uyumlu sürümünü kullanın
         minSdkVersion = 24
-        compileSdkVersion = 35
+        compileSdkVersion = 34 // 35 henüz desteklenmiyor olabilir
         targetSdkVersion = 34
         ndkVersion = "26.1.10909125"
-        kotlinVersion = "1.9.24"
+        kotlinVersion = "1.8.21" // Kotlin'in stabil bir sürümünü tercih edin
+        org.gradle.java.home="C:\\Program Files\\Java\\jdk-23"
+
     }
     repositories {
         google()
         mavenCentral()
+        
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.android.tools.build:gradle:8.2.1") // Uyumlu Gradle Plugin sürümü
+        classpath("com.facebook.react:react-native-gradle-plugin") // React Native için gerekli Gradle Plugin
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}") // Kotlin Gradle Plugin
     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+// Ek notlar:
+// compileSdkVersion ve targetSdkVersion olarak genellikle Google'ın en son desteklenen sürümlerine dikkat edin.
+// "35.0.0" gibi henüz yaygın olmayan sürümleri kullanmak sorunlara yol açabilir.
